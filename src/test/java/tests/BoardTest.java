@@ -22,6 +22,16 @@ public class BoardTest {
             XX
             X.
             """.trim();
+    private static final String board_3x3_with_all_alive = """
+            XXX
+            XXX
+            XXX
+            """.trim();
+    private static final String board_3x3_with_alive_cells_in_corners = """
+            X.X
+            ...
+            X.X
+            """.trim();
 
     @Test
     public void should_return_empty_board_given_empty_board() {
@@ -57,5 +67,11 @@ public class BoardTest {
     public void should_return_board_2x2_with_all_alive_given_board_2x2_with_triangle_structure() {
         String state = new Board(board_2x2_with_triangle_structure).next().state();
         assertThat(state).isEqualTo(board_2x2_with_all_cells_alive);
+    }
+
+    @Test
+    public void should_return_board_3x3_with_alive_cells_in_corners_given_board_3x3_with_all_alive() {
+        String state = new Board(board_3x3_with_all_alive).next().state();
+        assertThat(state).isEqualTo(board_3x3_with_alive_cells_in_corners);
     }
 }

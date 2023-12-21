@@ -17,21 +17,27 @@ public class Board {
     }
 
     public Board next(){
-        if(state[0].length() == 0) return new Board("");
-        if(state.length == 1) return new Board(".");
         return new Board(calculate());
     }
 
     private String calculate() {
         String result = "";
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < rows(); i++) {
+            for (int j = 0; j < cols(); j++) {
                 if(shouldBeAlive(i,j)) result+= String.valueOf(AliveCell);
                 else result+= String.valueOf(DeadCell);
             }
             result += LineBreak;
         }
         return result;
+    }
+
+    private int cols() {
+        return state[0].length();
+    }
+
+    private int rows() {
+        return state.length;
     }
 
     private boolean shouldBeAlive(int i, int j) {
@@ -76,7 +82,7 @@ public class Board {
     }
 
     private boolean isInBounds(int i, int j) {
-        return i>= 0 && i < 2 && j >= 0 && j < 2;
+        return i>= 0 && i < rows() && j >= 0 && j < cols();
     }
 
     public String state(){
