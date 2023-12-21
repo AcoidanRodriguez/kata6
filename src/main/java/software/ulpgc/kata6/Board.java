@@ -8,11 +8,12 @@ public class Board {
     }
 
     public Board next(){
+        if(state.equals(".")) return new Board(".");
         return new Board("");
     }
 
     public String state(){
-        return "";
+        return state;
     }
 }
 
