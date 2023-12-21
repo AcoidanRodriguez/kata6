@@ -10,6 +10,14 @@ public class BoardTest {
             XX
             XX
             """.trim();
+    private static final String board_2x2_with_one_cell_alive = """
+            ..
+            .X
+            """.trim();
+    private static final String board_2x2_with_all_dead = """
+            ..
+            ..
+            """.trim();
 
     @Test
     public void should_return_empty_board_given_empty_board() {
@@ -33,5 +41,11 @@ public class BoardTest {
     public void should_return_board_2x2_with_all_alive_given_board_2x2_with_all_alive() {
         String state = new Board(board_2x2_with_all_cells_alive).next().state();
         assertThat(state).isEqualTo(board_2x2_with_all_cells_alive);
+    }
+
+    @Test
+    public void should_return_board_2x2_with_all_dead_given_board_2x2_with_one_cell_alive() {
+        String state = new Board(board_2x2_with_one_cell_alive).next().state();
+        assertThat(state).isEqualTo(board_2x2_with_all_dead);
     }
 }
