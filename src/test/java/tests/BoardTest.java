@@ -17,4 +17,10 @@ public class BoardTest {
         String state = new Board(".").next().state();
         assertThat(state).isEqualTo(".");
     }
+
+    @Test
+    public void should_return_board_1x1_with_a_dead_cell_given_board_1x1_with_an_alive_cell() {
+        String state = new Board("X").next().state();
+        assertThat(state).isEqualTo(".");
+    }
 }

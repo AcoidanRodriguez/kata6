@@ -9,6 +9,7 @@ public class Board {
 
     public Board next(){
         if(state.equals(".")) return new Board(".");
+        if(state.equals("X")) return new Board(".");
         return new Board("");
     }
 
